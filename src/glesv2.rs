@@ -1028,7 +1028,7 @@ pub fn get_program_info_log(program: GLuint, max_length: GLsizei) -> Option<Stri
         let mut log = String::with_capacity(max_length as usize);
 
         ffi::glGetProgramInfoLog(program, max_length, &mut length,
-                                 log.as_mut_vec().as_mut_ptr() as *mut i8);
+                                 log.as_mut_vec().as_mut_ptr() as _);
 
         if length > 0 {
             log.as_mut_vec().set_len(length as usize);
@@ -1067,7 +1067,7 @@ pub fn get_shader_info_log(shader: GLuint, max_length: GLsizei) -> Option<String
         let mut log = String::with_capacity(max_length as usize);
 
         ffi::glGetShaderInfoLog(shader, max_length, &mut length,
-                                log.as_mut_vec().as_mut_ptr() as *mut i8);
+                                log.as_mut_vec().as_mut_ptr() as _);
 
         if length > 0 {
             log.as_mut_vec().set_len(length as usize);
